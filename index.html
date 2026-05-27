@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Scrascia — Concordato Preventivo Biennale 2026-2027</title>
+<style>
+/* ═══════════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════════ */
+:root {
+  --oro:      #C8963A;
+  --oro-h:    #D9A94E;
+  --oro-pale: #F7EDD8;
+  --oro-bg:   #FBF5EA;
+  --carbon:   #232323;
+  --grafite:  #3D3D3D;
+  --mid:      #6B6B6B;
+  --soft:     #9A9A9A;
+  --border:   #DDD5C5;
+  --bg:       #F2EFE8;
+  --white:    #FFFFFF;
+  --green:    #2E7D32;
+  --green-bg: #EEF7EE;
+  --red:      #7D2020;
+  --red-bg:   #FDF0EF;
+  --blue:     #1A4A7A;
+  --blue-bg:  #EEF3FA;
+  --amber:    #8B5E00;
+  --amber-bg: #FFF8E1;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--grafite);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.shell { display: flex; min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--carbon);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 200;
+  transition: transform 0.3s;
+  overflow-y: auto;
+}
+.sidebar-logo {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.sidebar-logo .logo-name {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.sidebar-logo .logo-sub {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--oro);
+}
+.sidebar-logo .logo-gem {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.gem-a { width: 18px; height: 22px; background: var(--oro); clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%); }
+.gem-b { width: 14px; height: 26px; background: var(--grafite); clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%); margin-top: 2px; }
+
+.sidebar-nav { flex: 1; padding: 12px 0; }
+.nav-section-label {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  padding: 14px 24px 6px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: all 0.18s;
+  border-left: 3px solid transparent;
+  user-select: none;
+}
+.nav-item:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+.nav-item.active { color: var(--oro); border-left-color: var(--oro); background: rgba(200,150,58,0.08); }
+.nav-icon { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; }
+
+.sidebar-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  line-height: 1.6;
+}
+
+/* ── MAIN AREA ── */
+.main {
+  margin-left: 250px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 8px rgba(44,44,44,0.06);
+}
+.topbar-title {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.topbar-title span { color: var(--carbon); }
+.topbar-meta {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  color: var(--soft);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tag-oro { background: var(--oro-pale); color: var(--oro); }
+.tag-blue { background: var(--blue-bg); color: var(--blue); }
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-red { background: var(--red-bg); color: var(--red); }
+.tag-amber { background: var(--amber-bg); color: var(--amber); }
+
+/* ── CONTENT ── */
+.content { flex: 1; padding: 36px; max-width: 900px; }
+
+/* ── PAGES ── */
+.page { display: none; animation: fadeUp 0.28s ease; }
+.page.active { display: block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════ */
+.page-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--oro);
+}
+.page-header .eyebrow {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 8px;
+}
+.page-header h1 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--carbon);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.page-header .subtitle {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+  color: var(--mid);
+}
+.page-header .rif {
+  margin-top: 12px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  color: var(--soft);
+}
+.page-header .rif strong { color: var(--grafite); }
+
+h2.section-title {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  color: var(--carbon);
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+h3.sub-title {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--grafite);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 22px 0 10px;
+}
+p { margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+
+/* ═══════════════════════════════════════════
+   COMPONENTS
+═══════════════════════════════════════════ */
+
+/* Alert box */
+.alert {
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid;
+  font-size: 14px;
+}
+.alert-oro   { background: var(--oro-bg); border-color: var(--oro); color: var(--amber); }
+.alert-blue  { background: var(--blue-bg); border-color: var(--blue); color: var(--blue); }
+.alert-green { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+.alert-red   { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+.alert strong { display: block; margin-bottom: 4px; font-family: 'Trebuchet MS', sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Card */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.card-head h3 {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--carbon);
+}
+
+/* Grid */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+
+/* Stat card */
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--oro);
+}
+.stat-card.green::before { background: var(--green); }
+.stat-card.blue::before  { background: var(--blue); }
+.stat-card.red::before   { background: var(--red); }
+.stat-label {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 6px;
+}
+.stat-value {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--carbon);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-sub { font-family: 'Trebuchet MS', sans-serif; font-size: 11px; color: var(--mid); }
+
+/* Checklist */
+.check-list { list-style: none; margin: 10px 0 18px; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.check-list li:last-child { border-bottom: none; }
+.check-list .ico { flex-shrink: 0; font-size: 16px; margin-top: 2px; }
+.check-list .ico-ok   { color: var(--green); }
+.check-list .ico-no   { color: var(--red); }
+.check-list .ico-warn { color: var(--oro); }
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin-bottom: 20px;
+}
+.data-table th {
+  background: var(--carbon);
+  color: var(--white);
+  padding: 10px 14px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.data-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: var(--oro-bg); }
+.data-table td strong { color: var(--carbon); }
+.data-table .mono { font-family: 'Courier New', monospace; font-size: 13px; }
+
+/* Accordion */
+.acc-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.acc-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.18s;
+}
+.acc-trigger:hover { background: var(--oro-bg); }
+.acc-trigger.open { background: var(--oro-bg); }
+.acc-trigger-left { display: flex; align-items: center; gap: 12px; }
+.acc-num {
+  width: 28px; height: 28px;
+  background: var(--oro-pale);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--oro);
+  flex-shrink: 0;
+}
+.acc-title {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--carbon);
+}
+.acc-sub {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  color: var(--soft);
+  margin-top: 2px;
+}
+.acc-arrow {
+  font-size: 18px;
+  color: var(--soft);
+  transition: transform 0.22s;
+  flex-shrink: 0;
+}
+.acc-trigger.open .acc-arrow { transform: rotate(90deg); color: var(--oro); }
+.acc-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+.acc-body.open { display: block; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 32px; margin: 16px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 22px;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--oro);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px var(--oro);
+}
+.tl-item.red::before { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+.tl-item.green::before { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
+.tl-item.blue::before { background: var(--blue); box-shadow: 0 0 0 2px var(--blue); }
+.tl-date {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 2px;
+}
+.tl-title {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--carbon);
+  margin-bottom: 4px;
+}
+.tl-desc { font-size: 13px; color: var(--mid); }
+
+/* Simulator */
+.simulator {
+  background: var(--carbon);
+  border-radius: 10px;
+  padding: 28px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.simulator h3 {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 20px;
+}
+.sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.sim-field label {
+  display: block;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 6px;
+}
+.sim-field input, .sim-field select {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: var(--white);
+  outline: none;
+  transition: border 0.18s;
+}
+.sim-field input:focus, .sim-field select:focus {
+  border-color: var(--oro);
+}
+.sim-field select option { background: var(--carbon); }
+.sim-result {
+  background: rgba(200,150,58,0.12);
+  border: 1px solid rgba(200,150,58,0.3);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 16px;
+}
+.sim-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+}
+.sim-result-row:last-child { border-bottom: none; }
+.sim-result-row .lbl { color: rgba(255,255,255,0.6); }
+.sim-result-row .val { color: var(--white); font-weight: 700; }
+.sim-result-row.total .lbl { color: var(--oro); font-weight: 700; font-size: 14px; }
+.sim-result-row.total .val { color: var(--oro); font-size: 18px; }
+.sim-note {
+  margin-top: 14px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 4px;
+  padding: 9px 20px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.18s;
+  border: none;
+}
+.btn-oro { background: var(--oro); color: var(--white); }
+.btn-oro:hover { background: var(--oro-h); }
+.btn-full { width: 100%; justify-content: center; margin-top: 12px; }
+
+/* Codice tributo badge */
+.cod-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--carbon);
+  color: var(--oro);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Riquadro normativo */
+.norm-box {
+  background: var(--blue-bg);
+  border: 1px solid #C5D8F0;
+  border-left: 4px solid var(--blue);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--blue);
+}
+.norm-box strong {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+/* Print styles */
+@media print {
+  .sidebar, .topbar { display: none !important; }
+  .main { margin-left: 0 !important; }
+  .content { padding: 0 !important; }
+  .page { display: block !important; }
+  .acc-body { display: block !important; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .main { margin-left: 0; }
+  .grid-2, .grid-3, .sim-grid { grid-template-columns: 1fr; }
+  .content { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ═══════ SIDEBAR ═══════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-gem"><div class="gem-a"></div><div class="gem-b"></div></div>
+    <div class="logo-name">Studio Scrascia</div>
+    <div class="logo-sub">Dott. Salvatore Scrascia</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Circolare n. 3/2026</div>
+    <div class="nav-item active" onclick="showPage('panoramica',this)">
+      <span class="nav-icon">📋</span>Panoramica
+    </div>
+    <div class="nav-item" onclick="showPage('soggetti',this)">
+      <span class="nav-icon">👤</span>Soggetti ammessi
+    </div>
+    <div class="nav-item" onclick="showPage('adesione',this)">
+      <span class="nav-icon">✍️</span>Come aderire
+    </div>
+    <div class="nav-item" onclick="showPage('reddito',this)">
+      <span class="nav-icon">📊</span>Reddito concordato
+    </div>
+    <div class="nav-item" onclick="showPage('sostitutiva',this)">
+      <span class="nav-icon">🧮</span>Imposta sostitutiva
+    </div>
+    <div class="nav-item" onclick="showPage('acconti',this)">
+      <span class="nav-icon">💳</span>Acconti 2026
+    </div>
+    <div class="nav-item" onclick="showPage('cessazione',this)">
+      <span class="nav-icon">⚠️</span>Cessazione e decadenza
+    </div>
+    <div class="nav-item" onclick="showPage('scadenzario',this)">
+      <span class="nav-icon">📅</span>Scadenzario
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    Fonte: Eutekne — CPB III ed.<br>
+    Aggiornato al 25.5.2026<br>
+    © Studio Scrascia
+  </div>
+</aside>
+
+<!-- ═══════ MAIN ═══════ -->
+<div class="main">
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-title">
+      <span>Concordato Preventivo Biennale</span> — 2026-2027
+    </div>
+    <div class="topbar-meta">
+      <span class="tag tag-oro">Circolare n. 3/2026</span>
+      <span class="tag tag-blue">D.Lgs. 13/2024</span>
+      <span>Scadenza adesione: <strong>2.11.2026</strong></span>
+    </div>
+  </header>
+
+  <div class="content">
+
+  <!-- ═════════════════════════════════════
+       PAGINA 1 — PANORAMICA
+  ═════════════════════════════════════ -->
+  <div id="panoramica" class="page active">
+    <div class="page-header">
+      <div class="eyebrow">Circolare n. 3 — Studio Scrascia — Maggio 2026</div>
+      <h1>Concordato Preventivo Biennale<br>III Edizione — Anni 2026-2027</h1>
+      <div class="subtitle">Guida operativa all'adesione per i contribuenti soggetti agli ISA</div>
+      <div class="rif">
+        <strong>Riferimenti normativi:</strong> D.Lgs. 12.2.2024 n. 13, artt. 6-39 (testo base) · DL 27.3.2026 n. 38, conv. L. 22.5.2026 n. 88 (modifiche 2026) · DM 11.5.2026 (metodologia) · D.Lgs. 13.12.2024 n. 192 (correzioni)
+      </div>
+    </div>
+
+    <div class="alert alert-oro">
+      <strong>⏱ Scadenza critica</strong>
+      Il termine per aderire al CPB 2026-2027 scade il <strong>31.10.2026</strong> (sabato → slitta a <strong>lunedì 2.11.2026</strong>), contestualmente alla presentazione del modello Redditi 2026. Non è prevista proroga automatica.
+    </div>
+
+    <div class="grid-3">
+      <div class="stat-card">
+        <div class="stat-label">Biennio concordato</div>
+        <div class="stat-value">2026-27</div>
+        <div class="stat-sub">Anni di imposta coperti</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-label">Scadenza adesione</div>
+        <div class="stat-value">2.11.26</div>
+        <div class="stat-sub">Con Redditi 2026</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-label">Imposta sostitutiva max</div>
+        <div class="stat-value">10-15%</div>
+        <div class="stat-sub">Su incremento ≤ €85.000</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Cos'è il Concordato Preventivo Biennale</h2>
+    <p>Il <strong>Concordato Preventivo Biennale (CPB)</strong> è un istituto introdotto dal D.Lgs. 12.2.2024 n. 13 (artt. 6-39) con cui l'Agenzia delle Entrate propone al contribuente — che esercita attività d'impresa o di lavoro autonomo soggetta agli ISA — un reddito e un valore della produzione concordati per due anni d'imposta consecutivi (2026 e 2027).</p>
+    <p>Accettando la proposta, il contribuente si impegna a dichiarare almeno gli importi concordati. In cambio ottiene <strong>protezione dagli accertamenti</strong> (salvo cause di decadenza) e la possibilità di applicare una <strong>imposta sostitutiva agevolata</strong> sull'incremento di reddito rispetto all'anno precedente.</p>
+    <p>La terza edizione del CPB riguarda i periodi d'imposta <strong>2026</strong> (proposta comunicata entro il 15.6.2026 dal software ISA) e <strong>2027</strong>. Le regole sono state aggiornate con il DL 38/2026, conv. L. 88/2026.</p>
+
+    <div class="norm-box">
+      <strong>Base normativa essenziale</strong>
+      Art. 6 D.Lgs. 13/2024: definizione e ambito · Art. 9: proposta dell'AE · Art. 10: adesione · Art. 17: reddito concordato · Art. 20-bis: imposta sostitutiva · Art. 21: cause di cessazione · Art. 22: cause di decadenza · Art. 7-bis co. 3 DL 38/2026: proroga termini adesione al 31.10.2026
+    </div>
+
+    <h2 class="section-title">Struttura della circolare</h2>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">1</div>
+          <div><div class="acc-title">Soggetti ammessi e cause di esclusione</div><div class="acc-sub">Chi può accedere al CPB per il biennio 2026-2027</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>Possono aderire i contribuenti <strong>persone fisiche e soggetti IRES</strong> che esercitano attività d'impresa o di lavoro autonomo, con applicazione degli <strong>ISA per il periodo d'imposta 2025</strong>, non in regime forfettario nel 2026.</p>
+        <p><strong>Condizioni soggettive al 31.12.2025:</strong> assenza di debiti tributari definitivi superiori a €5.000 per imposte e contributi (al netto di rateazioni); regolarità rispetto alle dichiarazioni fiscali degli anni 2022, 2023 e 2024; assenza di condanne per reati tributari (artt. 2-10 D.Lgs. 74/2000) o economici con sentenza definitiva/patteggiamento negli ultimi 3 anni.</p>
+        <p><a href="#" onclick="showPage('soggetti',document.querySelector('.nav-item:nth-child(3)'));return false;">→ Vedi sezione completa</a></p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">2</div>
+          <div><div class="acc-title">Procedura di adesione e termini</div><div class="acc-sub">Come accettare la proposta entro il 2.11.2026</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>La proposta di concordato è elaborata dall'Agenzia delle Entrate sulla base dei dati ISA 2025 (dichiarazione dei redditi periodo 2025) e comunicata al contribuente entro il <strong>15 giugno 2026</strong> tramite il software ministeriale per la compilazione degli ISA.</p>
+        <p>L'adesione avviene nella <strong>dichiarazione dei redditi 2025</strong> (modello Redditi PF o SC), compilando la sezione dedicata al CPB. Il termine ordinario coincide con la scadenza del modello Redditi: <strong>2.11.2026</strong> (31.10 cade di sabato).</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">3</div>
+          <div><div class="acc-title">Calcolo reddito concordato</div><div class="acc-sub">Come l'AE determina il reddito proposto</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>Il reddito concordato è determinato applicando la <strong>metodologia del DM 11.5.2026</strong> ai dati dichiarati nel modello ISA 2026. L'importo minimo del reddito concordabile è <strong>€2.000</strong> (art. 15 co. 2 D.Lgs. 13/2024). Il software ISA visualizza direttamente la proposta.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">4</div>
+          <div><div class="acc-title">Imposta sostitutiva sull'incremento</div><div class="acc-sub">Agevolazione facoltativa — aliquote 10%, 12%, 15%</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>In alternativa alla tassazione ordinaria, il contribuente può optare per un'<strong>imposta sostitutiva</strong> applicata sull'incremento di reddito rispetto al 2025 (art. 20-bis D.Lgs. 13/2024). L'opzione è conveniente quando il margine aggiuntivo sarebbe tassato a aliquote marginali elevate.</p>
+        <ul class="check-list">
+          <li><span class="ico ico-ok">✅</span><span>ISA da 8 a 10 → aliquota <strong>10%</strong></span></li>
+          <li><span class="ico ico-warn">⚠️</span><span>ISA da 6 a 7 → aliquota <strong>12%</strong></span></li>
+          <li><span class="ico ico-no">❌</span><span>ISA fino a 5 → aliquota <strong>15%</strong></span></li>
+        </ul>
+        <p>L'agevolazione si applica solo sulla quota incrementale fino a <strong>€85.000</strong>; l'eccedenza è tassata in via ordinaria.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">5</div>
+          <div><div class="acc-title">Maggiorazione acconti 2026</div><div class="acc-sub">Codici tributo 4068-4069-4070 — 30.11.2026</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>I contribuenti che aderiscono al CPB per la prima volta nel 2026 devono versare una <strong>maggiorazione sull'acconto</strong> determinata con metodo storico:</p>
+        <ul class="check-list">
+          <li><span class="ico ico-warn">⚠️</span><span>IRPEF: 10% × (reddito concordato 2026 − reddito 2024)</span></li>
+          <li><span class="ico ico-warn">⚠️</span><span>IRES: 10% × (reddito concordato 2026 − reddito 2024)</span></li>
+          <li><span class="ico ico-warn">⚠️</span><span>IRAP: 3% × (VP concordato 2026 − VP 2024)</span></li>
+        </ul>
+        <p>La maggiorazione è versata con la <strong>seconda/unica rata acconto</strong> entro il <strong>30.11.2026</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 2 — SOGGETTI AMMESSI
+  ═════════════════════════════════════ -->
+  <div id="soggetti" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 1</div>
+      <h1>Soggetti ammessi<br>e cause di esclusione</h1>
+      <div class="rif"><strong>Riferimenti:</strong> artt. 6, 7, 8, 10, 11, 12 D.Lgs. 13/2024 · DL 38/2026</div>
+    </div>
+
+    <h2 class="section-title">Chi può aderire</h2>
+    <p>Il CPB 2026-2027 è riservato ai contribuenti che:</p>
+    <ul class="check-list">
+      <li><span class="ico ico-ok">✅</span><span>Esercitano attività <strong>d'impresa o di lavoro autonomo</strong> (anche in forma di società di persone, associazioni professionali, soci di società di capitali trasparenti)</span></li>
+      <li><span class="ico ico-ok">✅</span><span>Sono soggetti agli <strong>ISA per il periodo d'imposta 2025</strong> (dichiarazione 2026)</span></li>
+      <li><span class="ico ico-ok">✅</span><span>Non applicano nel 2026 il <strong>regime forfettario</strong> (art. 1 co. 54-89 L. 190/2014)</span></li>
+      <li><span class="ico ico-ok">✅</span><span>Hanno presentato la <strong>dichiarazione dei redditi</strong> per gli anni 2022, 2023 e 2024 (salvo esonero)</span></li>
+      <li><span class="ico ico-ok">✅</span><span>Non hanno <strong>debiti tributari</strong> definitivi superiori a €5.000 al 31.12.2025 per imposte sui redditi, ritenute, contributi, IVA (esclusi oneri accessori)</span></li>
+    </ul>
+
+    <div class="alert alert-blue">
+      <strong>📌 Nota sui debiti tributari</strong>
+      Il limite di €5.000 si intende al netto delle somme oggetto di <strong>rateazione</strong> accordata (o in corso di accoglimento) e delle somme sospese per ricorso. Pertanto, chi ha debiti superiori ma è in regola con il piano di rateazione può comunque aderire.
+    </div>
+
+    <h2 class="section-title">Cause di esclusione soggettiva</h2>
+    <ul class="check-list">
+      <li><span class="ico ico-no">❌</span><span><strong>Condanne penali</strong> per reati di cui agli artt. 2, 3, 4, 5, 8, 10-bis, 10-ter, 10-quater, 11 D.Lgs. 74/2000 (delitti tributari) con sentenza definitiva o patteggiamento negli ultimi 3 anni</span></li>
+      <li><span class="ico ico-no">❌</span><span>Condanne per <strong>reati economici</strong> (art. 648-bis, 648-ter c.p.; reati societari; D.Lgs. 231/2001) passate in giudicato negli ultimi 3 anni</span></li>
+      <li><span class="ico ico-no">❌</span><span>Ricavi/compensi derivanti da attività esente o esclusa da ISA <strong>superiori al 40%</strong> del totale nel 2025 (art. 11 co. 3 D.Lgs. 13/2024)</span></li>
+      <li><span class="ico ico-no">❌</span><span>Regime forfettario applicabile già nel <strong>2026</strong> (primo anno del biennio)</span></li>
+    </ul>
+
+    <h2 class="section-title">Soggetti con periodo d'imposta non coincidente con anno solare</h2>
+    <p>Per le società con esercizio non coincidente con l'anno solare, le regole di accesso e i termini si adattano ai rispettivi periodi di imposta. Il raccordo è operato dalla metodologia del DM 11.5.2026.</p>
+
+    <h2 class="section-title">Soggetti in contabilità semplificata</h2>
+    <p>I contribuenti in <strong>contabilità semplificata</strong> che adottano il criterio di cassa (art. 66 TUIR) possono accedere al CPB. Il reddito concordato terrà conto della specificità del metodo di determinazione del reddito adottato.</p>
+
+    <div class="card">
+      <div class="card-head"><h3>Condizioni da verificare al 31.12.2025</h3></div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Condizione</th><th>Soglia / Dettaglio</th><th>Esito</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Debiti tributari definitivi</td><td>≤ €5.000 (al netto rateazioni)</td><td><span class="tag tag-green">OK → accesso</span></td></tr>
+          <tr><td>Dichiarazioni anni 2022-23-24</td><td>Presentate (o esonero)</td><td><span class="tag tag-green">OK → accesso</span></td></tr>
+          <tr><td>Applicazione ISA 2025</td><td>Sì</td><td><span class="tag tag-green">OK → accesso</span></td></tr>
+          <tr><td>Redditi esenti/esclusi ISA</td><td>≤ 40% del totale 2025</td><td><span class="tag tag-green">OK → accesso</span></td></tr>
+          <tr><td>Regime forfettario nel 2026</td><td>No</td><td><span class="tag tag-green">OK → accesso</span></td></tr>
+          <tr><td>Condanne penali tributarie/economiche</td><td>Nessuna negli ultimi 3 anni</td><td><span class="tag tag-green">OK → accesso</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-green">
+      <strong>✅ Soci di società di persone</strong>
+      I soci di società di persone e i collaboratori familiari possono aderire al CPB autonomamente, in relazione alla quota di reddito loro imputata per trasparenza. La proposta è formulata a livello societario ma l'adesione è individuale.
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 3 — COME ADERIRE
+  ═════════════════════════════════════ -->
+  <div id="adesione" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 2</div>
+      <h1>Come aderire<br>Procedura e termini</h1>
+      <div class="rif"><strong>Riferimenti:</strong> artt. 9, 10 D.Lgs. 13/2024 · art. 7-bis co. 3 DL 38/2026 · DM 11.5.2026</div>
+    </div>
+
+    <div class="alert alert-oro">
+      <strong>📅 Termine di adesione</strong>
+      <strong>2 novembre 2026</strong> (il 31 ottobre cade di sabato). L'adesione avviene direttamente nel modello Redditi 2026 (periodo d'imposta 2025), che ha la stessa scadenza.
+    </div>
+
+    <h2 class="section-title">Come viene elaborata la proposta</h2>
+    <p>Il processo si sviluppa in due fasi distinte:</p>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">1</div>
+          <div><div class="acc-title">Elaborazione della proposta</div><div class="acc-sub">Entro il 15 giugno 2026</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>L'Agenzia delle Entrate, sulla base dei dati dichiarativi e degli ISA relativi al <strong>periodo d'imposta 2025</strong>, elabora la proposta di concordato e la rende disponibile tramite il <strong>software ministeriale ISA</strong> (disponibile entro il 15.6.2026).</p>
+        <p>La proposta indica:</p>
+        <ul class="check-list">
+          <li><span class="ico ico-ok">✅</span><span>Il <strong>reddito concordato 2026</strong> (anno 1 del biennio)</span></li>
+          <li><span class="ico ico-ok">✅</span><span>Il <strong>reddito concordato 2027</strong> (anno 2 del biennio — proiezione)</span></li>
+          <li><span class="ico ico-ok">✅</span><span>Il <strong>valore della produzione IRAP concordato</strong> per entrambi gli anni</span></li>
+        </ul>
+        <p>L'importo non può essere inferiore a <strong>€2.000</strong> (art. 15 co. 2 D.Lgs. 13/2024). Se la metodologia produce un valore inferiore, la proposta è pari a €2.000.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">2</div>
+          <div><div class="acc-title">Adesione del contribuente</div><div class="acc-sub">Entro il 2 novembre 2026 — nel modello Redditi</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>L'adesione si manifesta compilando il <strong>quadro CPB</strong> del modello Redditi PF 2026 (per le persone fisiche) o del modello SC 2026 (per i soggetti IRES) e presentando la dichiarazione entro il <strong>2.11.2026</strong>.</p>
+        <p>Non è prevista una procedura separata: la dichiarazione dei redditi stessa costituisce l'atto di adesione.</p>
+        <div class="norm-box">
+          <strong>Articolo 10 D.Lgs. 13/2024</strong>
+          "Il contribuente aderisce alla proposta di concordato preventivo biennale barrando la casella prevista nel modello di dichiarazione dei redditi relativo al primo anno del biennio."
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">3</div>
+          <div><div class="acc-title">Dichiarazione integrativa post-adesione</div><div class="acc-sub">Condizioni e limiti</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>Dopo aver aderito, il contribuente può presentare una <strong>dichiarazione integrativa</strong> nei termini ordinari (entro il 31.12 del quinto anno successivo) solo per correggere errori contabili o per dichiarare maggiori redditi non coperti dal concordato.</p>
+        <p class="alert alert-red" style="margin-top:10px"><strong>⚠️ Attenzione — Causa di decadenza</strong> La presentazione di una dichiarazione integrativa che incrementa il reddito imponibile di oltre il <strong>30% dei ricavi/compensi</strong> dichiarati provoca la <strong>decadenza dal CPB per entrambi gli anni del biennio</strong> (art. 22 co. 1 lett. d D.Lgs. 13/2024).</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Operazioni straordinarie durante il biennio</h2>
+    <p>In caso di <strong>trasformazioni, fusioni, scissioni o conferimenti</strong> che modificano la struttura del soggetto aderente durante il biennio concordato, si applicano le specifiche regole di cui agli artt. 21 e 22 D.Lgs. 13/2024 (vedi sezione Cessazione e decadenza).</p>
+
+    <div class="card">
+      <div class="card-head"><h3>Riepilogo adempimenti per l'adesione</h3></div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Adempimento</th><th>Quando</th><th>Come</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Compilazione ISA 2025</td>
+            <td>Entro il 2.11.2026</td>
+            <td>Software ministeriale ISA 2026</td>
+          </tr>
+          <tr>
+            <td>Visualizzazione proposta CPB</td>
+            <td>Dal 15.6.2026</td>
+            <td>Software ISA — sezione CPB</td>
+          </tr>
+          <tr>
+            <td>Valutazione convenienza</td>
+            <td>Entro il 2.11.2026</td>
+            <td>Confronto proposta vs. reddito atteso</td>
+          </tr>
+          <tr>
+            <td>Adesione nel modello Redditi 2026</td>
+            <td><strong>Entro il 2.11.2026</strong></td>
+            <td>Barrare casella quadro CPB</td>
+          </tr>
+          <tr>
+            <td>Versamento imposta sostitutiva CPB 2025</td>
+            <td>20.7.2026 (o 20.8 +0,4%)</td>
+            <td>F24 — codice <span class="cod-badge">4071</span></td>
+          </tr>
+          <tr>
+            <td>Versamento maggiorazione acconti 2026</td>
+            <td>30.11.2026</td>
+            <td>F24 — codici <span class="cod-badge">4068</span> <span class="cod-badge">4069</span> <span class="cod-badge">4070</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 4 — REDDITO CONCORDATO
+  ═════════════════════════════════════ -->
+  <div id="reddito" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 3</div>
+      <h1>Il reddito concordato<br>Determinazione e effetti</h1>
+      <div class="rif"><strong>Riferimenti:</strong> artt. 15-20 D.Lgs. 13/2024 · DM 11.5.2026 · circ. AE n. 18/E/2024</div>
+    </div>
+
+    <h2 class="section-title">Come è determinato il reddito proposto</h2>
+    <p>L'Agenzia delle Entrate determina la proposta di reddito concordato applicando la <strong>metodologia statistica approvata con DM 11.5.2026</strong>, che utilizza come dati di input:</p>
+    <ul class="check-list">
+      <li><span class="ico ico-ok">✅</span><span>I <strong>ricavi e compensi dichiarati</strong> per il 2025 (e anni precedenti)</span></li>
+      <li><span class="ico ico-ok">✅</span><span>Il <strong>punteggio ISA</strong> del contribuente per il 2025</span></li>
+      <li><span class="ico ico-ok">✅</span><span>I dati di <strong>settore economico</strong> (ISA di appartenenza)</span></li>
+      <li><span class="ico ico-ok">✅</span><span>Le tendenze di crescita <strong>settoriali e macroeconomiche</strong></span></li>
+      <li><span class="ico ico-ok">✅</span><span>Il <strong>reddito dichiarato negli anni precedenti</strong> (serie storica)</span></li>
+    </ul>
+
+    <div class="alert alert-blue">
+      <strong>📌 Reddito minimo concordabile: €2.000</strong>
+      Ai sensi dell'art. 15 co. 2 D.Lgs. 13/2024, il reddito concordato non può essere in alcun caso inferiore a <strong>€2.000</strong>, anche se la metodologia produrrebbe un importo inferiore.
+    </div>
+
+    <h2 class="section-title">Effetti dell'adesione sul reddito imponibile</h2>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">A</div>
+          <div><div class="acc-title">Reddito effettivo ≥ reddito concordato</div><div class="acc-sub">Si dichiara il reddito concordato</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>Se il reddito effettivo è <strong>pari o superiore</strong> al reddito concordato, il contribuente dichiara <strong>il reddito concordato</strong>. L'eccedenza rispetto al concordato non viene tassata (vantaggio fiscale). Non è possibile applicare l'imposta sostitutiva in questo caso (non c'è incremento di reddito rispetto al concordato).</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-trigger-left">
+          <div class="acc-num">B</div>
+          <div><div class="acc-title">Reddito effettivo &lt; reddito concordato</div><div class="acc-sub">Si dichiara comunque il reddito concordato</div></div>
+        </div>
+        <div class="acc-arrow">›</div>
+      </div>
+      <div class="acc-body">
+        <p>Se il reddito effettivo è <strong>inferiore</strong> al reddito concordato, il contribuente dichiara comunque il <strong>reddito concordato</strong> (obbligo di dichiarare almeno l'importo concordato). Pertanto le imposte sono calcolate su un imponibile superiore a quello effettivo. Il concordato non conviene se si prevede un forte calo di reddito (salvo causa di cessazione).</p>
+        <p>Eccezione: se il reddito effettivo scende di oltre il <strong>30%</strong> rispetto all'anno precedente per <strong>circostanze straordinarie</strong> (calamità, crisi settoriale, malattia grave del titolare), può scattare la causa di cessazione (art. 21 co. 1 lett. e D.Lgs. 13/2024).</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Reddito concordato e IVA</h2>
+    <p>Il CPB <strong>non modifica le regole IVA</strong>. Il contribuente continua a emettere fatture, applicare l'IVA ordinaria e versarla nei termini consueti. Il concordato riguarda esclusivamente l'IRPEF/IRES e l'IRAP, non l'IVA.</p>
+
+    <h2 class="section-title">Reddito concordato 2027 (secondo anno)</h2>
+    <p>La proposta copre entrambi gli anni del biennio. Per il <strong>2027</strong>, il reddito concordato viene rielaborato dall'AE sulla base dei dati ISA 2027 (dichiarazione 2028), ma l'impegno iniziale comprende già una stima del 2027 calcolata applicando alla proposta 2026 i coefficienti di crescita settoriale del DM 11.5.2026.</p>
+    <p>Se nel 2027 le condizioni del contribuente cambiano in modo sostanziale (es. cambio di attività, cessazione), si applicano le cause di cessazione e decadenza (art. 21-22 D.Lgs. 13/2024).</p>
+
+    <div class="norm-box">
+      <strong>Art. 17 D.Lgs. 13/2024 — Impegni del contribuente</strong>
+      "Il contribuente che aderisce al concordato preventivo biennale è tenuto a dichiarare, per ciascuno dei due periodi d'imposta compresi nel biennio, il reddito e il valore della produzione netta oggetto del concordato, anche se il reddito effettivo risulta inferiore a quello concordato."
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 5 — IMPOSTA SOSTITUTIVA
+  ═════════════════════════════════════ -->
+  <div id="sostitutiva" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 4</div>
+      <h1>Imposta sostitutiva<br>sull'incremento di reddito</h1>
+      <div class="rif"><strong>Riferimenti:</strong> art. 20-bis D.Lgs. 13/2024 (ins. da D.Lgs. 192/2024) · DL 38/2026 · Ris. AE n. 47/E/2025</div>
+    </div>
+
+    <div class="alert alert-oro">
+      <strong>🎯 Quando conviene l'imposta sostitutiva</strong>
+      L'opzione per l'imposta sostitutiva è conveniente quando l'<strong>aliquota marginale IRPEF</strong> del contribuente supera il 23% e si prevede un incremento di reddito rispetto all'anno precedente. Per i soggetti IRES conviene quasi sempre rispetto all'aliquota ordinaria del 24%.
+    </div>
+
+    <h2 class="section-title">Aliquote applicabili</h2>
+    <p>L'aliquota dell'imposta sostitutiva dipende dal <strong>punteggio ISA conseguito nell'anno 2025</strong>:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Punteggio ISA 2025</th><th>Aliquota sostitutiva</th><th>Base imponibile</th><th>Tassazione eccedenza</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Da 8 a 10</strong> <span class="tag tag-green">Alta affidabilità</span></td>
+          <td style="font-size:20px;font-weight:700;color:var(--green)">10%</td>
+          <td>Incremento fino a €85.000</td>
+          <td>IRPEF ord. (fino al 43%) / IRES 24%</td>
+        </tr>
+        <tr>
+          <td><strong>Da 6 a 7</strong> <span class="tag tag-amber">Affidabilità media</span></td>
+          <td style="font-size:20px;font-weight:700;color:var(--amber)">12%</td>
+          <td>Incremento fino a €85.000</td>
+          <td>IRPEF ord. (fino al 43%) / IRES 24%</td>
+        </tr>
+        <tr>
+          <td><strong>Fino a 5</strong> <span class="tag tag-red">Bassa affidabilità</span></td>
+          <td style="font-size:20px;font-weight:700;color:var(--red)">15%</td>
+          <td>Incremento fino a €85.000</td>
+          <td>IRPEF ord. (fino al 43%) / IRES 24%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="norm-box">
+      <strong>Art. 20-bis co. 2 D.Lgs. 13/2024</strong>
+      "La base imponibile dell'imposta sostitutiva è costituita dalla differenza, se positiva, tra il reddito concordato e il reddito del periodo d'imposta precedente, nel limite massimo di 85.000 euro."
+    </div>
+
+    <h2 class="section-title">Calcolo dell'imposta sostitutiva</h2>
+    <p>La base imponibile è: <strong>Reddito concordato 2026 − Reddito dichiarato 2025</strong> (se positivo), con tetto massimo di <strong>€85.000</strong>.</p>
+    <p>L'imposta sostitutiva si aggiunge all'imposta ordinaria calcolata sul reddito 2025 (anno base). Non sostituisce l'imposta sull'intero reddito concordato, ma solo sull'incremento.</p>
+
+    <!-- SIMULATORE -->
+    <div class="simulator">
+      <h3>🧮 Simulatore Imposta Sostitutiva CPB 2026</h3>
+      <div class="sim-grid">
+        <div class="sim-field">
+          <label>Reddito dichiarato 2025 (€)</label>
+          <input type="number" id="reddito2025" placeholder="es. 50000" oninput="calcSostitutiva()">
+        </div>
+        <div class="sim-field">
+          <label>Reddito concordato 2026 (€)</label>
+          <input type="number" id="reddito2026" placeholder="es. 65000" oninput="calcSostitutiva()">
+        </div>
+        <div class="sim-field">
+          <label>Punteggio ISA 2025</label>
+          <select id="punteggioISA" onchange="calcSostitutiva()">
+            <option value="">— Seleziona —</option>
+            <option value="10">8-10 (alta affidabilità)</option>
+            <option value="12">6-7 (media affidabilità)</option>
+            <option value="15">Fino a 5 (bassa affidabilità)</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label>Tipo soggetto</label>
+          <select id="tipoSoggetto" onchange="calcSostitutiva()">
+            <option value="pf">Persona fisica (IRPEF)</option>
+            <option value="sc">Società (IRES)</option>
+          </select>
+        </div>
+      </div>
+      <div class="sim-result" id="simResult" style="display:none">
+        <div class="sim-result-row">
+          <span class="lbl">Reddito 2025 (base)</span>
+          <span class="val" id="sr-base">—</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="lbl">Reddito concordato 2026</span>
+          <span class="val" id="sr-conc">—</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="lbl">Incremento lordo</span>
+          <span class="val" id="sr-incr">—</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="lbl">Base imponibile sostitutiva (max €85.000)</span>
+          <span class="val" id="sr-base-imp">—</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="lbl">Aliquota sostitutiva</span>
+          <span class="val" id="sr-aliq">—</span>
+        </div>
+        <div class="sim-result-row total">
+          <span class="lbl">💰 Imposta sostitutiva dovuta</span>
+          <span class="val" id="sr-imp">—</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="lbl">Eccedenza sopra €85.000 (tassazione ordinaria)</span>
+          <span class="val" id="sr-ecc">—</span>
+        </div>
+      </div>
+      <div class="sim-note" id="simNote" style="display:none"></div>
+    </div>
+
+    <h2 class="section-title">Versamento dell'imposta sostitutiva CPB 2025</h2>
+    <p>L'imposta sostitutiva relativa all'adesione al CPB per il periodo 2025 (seconda edizione) è versata contestualmente al saldo IRPEF/IRES:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Scadenza</th><th>Modalità</th><th>Codice tributo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>20 luglio 2026</strong> (prorogato da DL 89/2026)</td>
+          <td>Versamento in unica soluzione o prima rata</td>
+          <td><span class="cod-badge">4071</span></td>
+        </tr>
+        <tr>
+          <td><strong>20 agosto 2026</strong> + 0,40% maggiorazione</td>
+          <td>Versamento con proroga estiva</td>
+          <td><span class="cod-badge">4071</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-green">
+      <strong>✅ Imposta sostitutiva CPB 2026 (nuova adesione)</strong>
+      Chi aderisce per la prima volta al CPB nel 2026-2027 verserà l'imposta sostitutiva sull'incremento 2026 vs. 2025 alle scadenze del saldo 2026: indicativamente <strong>luglio 2027</strong> (con la dichiarazione Redditi 2027).
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 6 — ACCONTI 2026
+  ═════════════════════════════════════ -->
+  <div id="acconti" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 5</div>
+      <h1>Acconti 2026<br>Calcolo e maggiorazioni CPB</h1>
+      <div class="rif"><strong>Riferimenti:</strong> art. 20 D.Lgs. 13/2024 · DL 38/2026 · DL 89/2026 · Provv. AE 15.6.2026</div>
+    </div>
+
+    <div class="alert alert-oro">
+      <strong>⚠️ Prima adesione al CPB nel 2026</strong>
+      I contribuenti che aderiscono al CPB <strong>per la prima volta</strong> nel 2026-2027 devono versare una <strong>maggiorazione di acconto</strong> calcolata con il metodo storico. Questa maggiorazione è versata con la seconda/unica rata di acconto entro il <strong>30 novembre 2026</strong>.
+    </div>
+
+    <h2 class="section-title">Regime degli acconti per chi aderisce</h2>
+    <p>Per i contribuenti che aderiscono al CPB 2026-2027, il regime degli acconti IRPEF/IRES/IRAP per il 2026 si articola come segue:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head"><h3>Prima rata acconto (giugno-luglio 2026)</h3></div>
+        <p>Calcolata <strong>senza</strong> maggiorazione CPB, secondo le regole ordinarie (40% dell'acconto con metodo storico, o acconto previsionale).</p>
+        <p>Scadenza: <strong>20 luglio 2026</strong> (prorogata da DL 89/2026 — in origine 30.6)</p>
+        <p>Con proroga di 30 gg.: <strong>20 agosto 2026</strong> + 0,40%</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Seconda/unica rata acconto (novembre 2026)</h3></div>
+        <p>Calcolata <strong>con</strong> maggiorazione CPB. Include:</p>
+        <ul class="check-list">
+          <li><span class="ico ico-warn">⚠️</span>Acconto ordinario (60%)</li>
+          <li><span class="ico ico-warn">⚠️</span>Maggiorazione CPB (10%/3%)</li>
+        </ul>
+        <p>Scadenza: <strong>30 novembre 2026</strong></p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Calcolo della maggiorazione CPB</h2>
+    <p>La maggiorazione è calcolata con il <strong>metodo storico</strong> applicando le seguenti formule (artt. 20 D.Lgs. 13/2024, come modificato da DL 38/2026):</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Imposta</th><th>Formula maggiorazione</th><th>Codice tributo F24</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>IRPEF</strong> (persone fisiche)</td>
+          <td class="mono">10% × (P06 − P04)</td>
+          <td><span class="cod-badge">4068</span></td>
+        </tr>
+        <tr>
+          <td><strong>IRES</strong> (società di capitali)</td>
+          <td class="mono">10% × (P06 − P04)</td>
+          <td><span class="cod-badge">4069</span></td>
+        </tr>
+        <tr>
+          <td><strong>IRAP</strong></td>
+          <td class="mono">3% × (P08 − P05)</td>
+          <td><span class="cod-badge">4070</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-blue">
+      <strong>📌 Legenda delle variabili</strong>
+      <strong>P04</strong> = reddito di impresa/lavoro autonomo periodo d'imposta 2024 (colonna 4) · <strong>P06</strong> = reddito concordato 2026 (colonna 6) · <strong>P05</strong> = valore produzione IRAP 2024 (colonna 5) · <strong>P08</strong> = valore produzione IRAP concordato 2026 (colonna 8). Le colonne si riferiscono al quadro CPB del modello Redditi 2026.
+    </div>
+
+    <h2 class="section-title">Esempio pratico di calcolo</h2>
+    <div class="card">
+      <div class="card-head"><h3>Esempio — Imprenditore individuale</h3></div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Dato</th><th>Importo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Reddito dichiarato 2024 (P04)</td><td>€ 60.000</td></tr>
+          <tr><td>Reddito concordato 2026 (P06)</td><td>€ 75.000</td></tr>
+          <tr><td>Differenza (P06 − P04)</td><td>€ 15.000</td></tr>
+          <tr><td><strong>Maggiorazione IRPEF (10% × €15.000)</strong></td><td><strong>€ 1.500</strong></td></tr>
+          <tr><td>VP IRAP 2024 (P05)</td><td>€ 62.000</td></tr>
+          <tr><td>VP IRAP concordato 2026 (P08)</td><td>€ 77.000</td></tr>
+          <tr><td>Differenza (P08 − P05)</td><td>€ 15.000</td></tr>
+          <tr><td><strong>Maggiorazione IRAP (3% × €15.000)</strong></td><td><strong>€ 450</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:13px;color:var(--mid)">La maggiorazione IRPEF di €1.500 e quella IRAP di €450 si versano il <strong>30.11.2026</strong> con F24 usando i codici tributo dedicati.</p>
+    </div>
+
+    <h2 class="section-title">Acconti per chi era già nel CPB 2025-2026</h2>
+    <p>I contribuenti che hanno già aderito al CPB per il biennio <strong>2025-2026</strong> e ora aderiscono per il 2026-2027 sono soggetti alla maggiorazione solo per l'eventuale incremento di reddito concordato rispetto all'anno base (2024). Non sono applicabili le regole della "prima adesione" in quanto si tratta di rinnovo.</p>
+
+    <div class="norm-box">
+      <strong>Art. 20 co. 2 D.Lgs. 13/2024 (come modificato da DL 38/2026)</strong>
+      "Ai fini del calcolo degli acconti delle imposte sui redditi e dell'imposta regionale sulle attività produttive dovuti per il primo periodo d'imposta di applicazione del concordato, il contribuente che ha aderito al concordato preventivo biennale utilizza come base di calcolo il maggiore tra il reddito del periodo d'imposta precedente e il reddito concordato."
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 7 — CESSAZIONE E DECADENZA
+  ═════════════════════════════════════ -->
+  <div id="cessazione" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 6</div>
+      <h1>Cessazione e decadenza<br>dal Concordato</h1>
+      <div class="rif"><strong>Riferimenti:</strong> art. 21 (cessazione) · art. 22 (decadenza) D.Lgs. 13/2024 · DL 38/2026</div>
+    </div>
+
+    <div class="alert alert-red">
+      <strong>⚠️ Differenza fondamentale</strong>
+      La <strong>cessazione</strong> fa venir meno il concordato solo per l'anno in cui si verifica l'evento (in avanti). La <strong>decadenza</strong> produce effetti retroattivi su <strong>entrambi gli anni del biennio</strong>, con conseguente applicazione delle regole ordinarie e possibile recupero delle imposte con sanzioni e interessi.
+    </div>
+
+    <h2 class="section-title">Cause di cessazione (art. 21 D.Lgs. 13/2024)</h2>
+    <p>Il concordato cessa di avere efficacia a partire dall'anno in cui si verifica uno dei seguenti eventi:</p>
+
+    <ul class="check-list">
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Mutamento dell'attività</strong>: il contribuente modifica in modo sostanziale l'attività esercitata nel corso del biennio (codice ISA diverso)</span></li>
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Cessazione dell'attività</strong>: il contribuente cessa l'attività economica</span></li>
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Ricavi/compensi superiori a €7.746.853,50</strong>: superamento del limite che determina l'inapplicabilità degli ISA</span></li>
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Circostanze straordinarie</strong>: il reddito effettivo risulta inferiore di oltre il <strong>30%</strong> rispetto al reddito concordato, per eventi di natura straordinaria (calamità, crisi settoriale, malattia grave del titolare — da documentare)</span></li>
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Adozione del regime forfettario</strong>: il contribuente accede al regime forfettario nel secondo anno del biennio</span></li>
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Operazioni straordinarie</strong>: fusioni, scissioni, trasformazioni, conferimenti d'azienda che alterano sostanzialmente il soggetto giuridico aderente</span></li>
+      <li><span class="ico ico-warn">⚠️</span><span><strong>Modifiche societarie</strong>: mutamento delle quote di partecipazione nelle società di persone o associazioni professionali che alterano in modo significativo la composizione</span></li>
+    </ul>
+
+    <div class="norm-box">
+      <strong>Art. 21 co. 1 lett. e D.Lgs. 13/2024 — Circostanze eccezionali</strong>
+      "Il concordato cessa di avere efficacia a decorrere dal periodo d'imposta nel quale si verificano circostanze di carattere straordinario che hanno determinato una riduzione del reddito di oltre il 30 per cento rispetto a quello concordato."
+    </div>
+
+    <h2 class="section-title">Cause di decadenza (art. 22 D.Lgs. 13/2024)</h2>
+    <p>La decadenza produce effetti su <strong>entrambi gli anni del biennio</strong> (anche su quello già trascorso):</p>
+
+    <ul class="check-list">
+      <li><span class="ico ico-no">❌</span><span><strong>Accertamento di redditi non dichiarati</strong> superiori al <strong>30% dei ricavi/compensi</strong> dichiarati nel periodo di concordato (art. 22 co. 1 lett. a)</span></li>
+      <li><span class="ico ico-no">❌</span><span><strong>Violazioni gravi</strong> in materia di IVA o di riscossione accertate con provvedimento definitivo (sanzioni superiori a €1.000 — soglia da DL 38/2026)</span></li>
+      <li><span class="ico ico-no">❌</span><span><strong>Dati ISA non corretti</strong>: indicazione di dati inesatti o incompleti nella comunicazione ISA che hanno influenzato la proposta di concordato in misura rilevante</span></li>
+      <li><span class="ico ico-no">❌</span><span><strong>Dichiarazione integrativa</strong> che incrementa il reddito imponibile di oltre il <strong>30% dei ricavi/compensi</strong> dichiarati (lett. d)</span></li>
+      <li><span class="ico ico-no">❌</span><span><strong>Assenza delle condizioni</strong> soggettive di accesso già alla data di adesione (es.: debiti tributari superiori a €5.000 non comunicati)</span></li>
+      <li><span class="ico ico-no">❌</span><span><strong>Omesso versamento</strong> delle imposte concordate entro i termini prescritti (proroghe incluse)</span></li>
+    </ul>
+
+    <div class="alert alert-red">
+      <strong>❌ Effetti della decadenza</strong>
+      In caso di decadenza: (1) il concordato è inefficace per entrambi gli anni; (2) l'Agenzia può procedere ad accertamento ordinario senza i limiti derivanti dal concordato; (3) le imposte sostitutive eventualmente versate non sono rimborsabili ma si scomputano dall'imposta ordinaria; (4) si applicano sanzioni e interessi sulle maggiori imposte dovute.
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Confronto: Cessazione vs. Decadenza</h3></div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Aspetto</th><th>Cessazione (art. 21)</th><th>Decadenza (art. 22)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Anno di efficacia</td>
+            <td>Solo dall'anno dell'evento in poi</td>
+            <td><strong>Entrambi gli anni del biennio</strong></td>
+          </tr>
+          <tr>
+            <td>Recupero imposte</td>
+            <td>Ordinario dall'anno della cessazione</td>
+            <td>Retroattivo — anche anno già dichiarato</td>
+          </tr>
+          <tr>
+            <td>Sanzioni</td>
+            <td>Non automatiche</td>
+            <td>Sì — con sanzioni e interessi</td>
+          </tr>
+          <tr>
+            <td>Imposta sostitutiva</td>
+            <td>Proporzionalmente ridotta</td>
+            <td>Non rimborsata (scomputo da imp. ord.)</td>
+          </tr>
+          <tr>
+            <td>Cause tipiche</td>
+            <td>Cambio attività, calo reddito straord.</td>
+            <td>Evasione, dati ISA falsi, omessi versamenti</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       PAGINA 8 — SCADENZARIO
+  ═════════════════════════════════════ -->
+  <div id="scadenzario" class="page">
+    <div class="page-header">
+      <div class="eyebrow">Sezione 7</div>
+      <h1>Scadenzario 2026<br>Tutti i termini del CPB</h1>
+      <div class="rif"><strong>Riferimenti:</strong> DL 38/2026 · DL 89/2026 · Provv. AE 15.6.2026 · DM 11.5.2026</div>
+    </div>
+
+    <div class="alert alert-blue">
+      <strong>📅 Anno solare 2026 — Scadenze CPB</strong>
+      Il 2026 è l'anno "cuscinetto": si versano le imposte relative al CPB 2025 (adesione dell'anno scorso) e si aderisce al CPB 2026-2027. Entrambe le scadenze convergono sull'estate-autunno 2026.
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item green">
+        <div class="tl-date">15 Giugno 2026</div>
+        <div class="tl-title">Proposta CPB 2026-2027 disponibile</div>
+        <div class="tl-desc">L'AE rende disponibile la proposta di reddito concordato per il biennio 2026-2027 tramite il software ISA. Base: dati dichiarativi 2025 e punteggio ISA 2025.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">20 Luglio 2026</div>
+        <div class="tl-title">Saldo 2025 + Prima rata acconto 2026 + Imp. sostitutiva CPB 2025</div>
+        <div class="tl-desc">
+          Scadenza prorogata dal DL 89/2026 (in origine 30.6). Include:<br>
+          • Saldo IRPEF/IRES 2025<br>
+          • Prima rata acconto IRPEF/IRES 2026 (40% — metodo storico)<br>
+          • Imposta sostitutiva CPB 2025 — cod. <span class="cod-badge" style="font-size:11px">4071</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">20 Agosto 2026</div>
+        <div class="tl-title">Versamenti di luglio con maggiorazione 0,40%</div>
+        <div class="tl-desc">Proroga "feriale". Tutti i versamenti del 20.7.2026 possono slittare al 20.8.2026 con maggiorazione dello 0,40% (ex 0,4% da D.Lgs. 1/2024, art. 37).</div>
+      </div>
+
+      <div class="tl-item red">
+        <div class="tl-date">2 Novembre 2026</div>
+        <div class="tl-title">⚡ SCADENZA ADESIONE CPB 2026-2027</div>
+        <div class="tl-desc">
+          Termine ultimo per:<br>
+          • Presentazione modello Redditi PF/SC 2026 (periodo 2025)<br>
+          • Adesione al CPB 2026-2027 (quadro CPB nella dichiarazione)<br>
+          Il 31.10 cade di sabato → proroga automatica a lunedì 2.11.2026 (art. 7-bis co. 3 DL 38/2026).
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">30 Novembre 2026</div>
+        <div class="tl-title">Seconda rata acconto 2026 + Maggiorazione CPB</div>
+        <div class="tl-desc">
+          Include:<br>
+          • Seconda rata acconto IRPEF/IRES 2026 (60%)<br>
+          • Maggiorazione IRPEF/IRES: 10% × (P06−P04) — cod. <span class="cod-badge" style="font-size:11px">4068</span>/<span class="cod-badge" style="font-size:11px">4069</span><br>
+          • Maggiorazione IRAP: 3% × (P08−P05) — cod. <span class="cod-badge" style="font-size:11px">4070</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="section-title">Riepilogo codici tributo CPB</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Codice tributo</th><th>Descrizione</th><th>Scadenza</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cod-badge">4068</span></td>
+          <td>Maggiorazione acconto IRPEF — prima adesione CPB 2026</td>
+          <td>30.11.2026</td>
+        </tr>
+        <tr>
+          <td><span class="cod-badge">4069</span></td>
+          <td>Maggiorazione acconto IRES — prima adesione CPB 2026</td>
+          <td>30.11.2026</td>
+        </tr>
+        <tr>
+          <td><span class="cod-badge">4070</span></td>
+          <td>Maggiorazione acconto IRAP — prima adesione CPB 2026</td>
+          <td>30.11.2026</td>
+        </tr>
+        <tr>
+          <td><span class="cod-badge">4071</span></td>
+          <td>Imposta sostitutiva CPB 2025 (art. 20-bis D.Lgs. 13/2024)</td>
+          <td>20.7.2026 (o 20.8+0,40%)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">Calendario sintetico</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Data</th><th>Adempimento</th><th>Chi è interessato</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>15.6.2026</strong></td>
+          <td>Disponibilità proposta CPB nel software ISA</td>
+          <td>Tutti i potenziali aderenti</td>
+        </tr>
+        <tr>
+          <td><strong>20.7.2026</strong></td>
+          <td>Saldo IRPEF/IRES 2025 + I rata acconto + imp. sostitutiva CPB 2025</td>
+          <td>Chi ha aderito CPB 2025-2026</td>
+        </tr>
+        <tr>
+          <td><strong>20.8.2026</strong></td>
+          <td>Proroga versamenti luglio (+0,40%)</td>
+          <td>Tutti</td>
+        </tr>
+        <tr>
+          <td><strong>2.11.2026</strong> ⚡</td>
+          <td>Presentazione Redditi 2026 + adesione CPB 2026-2027</td>
+          <td>Chi vuole aderire</td>
+        </tr>
+        <tr>
+          <td><strong>30.11.2026</strong></td>
+          <td>II rata acconto IRPEF/IRES/IRAP + maggiorazione CPB</td>
+          <td>Chi ha aderito CPB 2026-2027</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-oro" style="margin-top:28px">
+      <strong>📞 Contattate lo Studio</strong>
+      Per una valutazione personalizzata della convenienza del CPB 2026-2027, verificare i requisiti di accesso e calcolare la proposta, contattate il Dott. Scrascia. La proposta dell'AE sarà disponibile dal 15 giugno 2026 nel software ISA — è fondamentale analizzarla prima della scadenza del 2.11.2026.
+    </div>
+  </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /shell -->
+
+<script>
+// ═══════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════
+function showPage(id, navEl) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  // Show target
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ═══════════════════════════════════════
+// ACCORDION
+// ═══════════════════════════════════════
+function toggleAcc(trigger) {
+  const body = trigger.nextElementSibling;
+  const isOpen = trigger.classList.contains('open');
+  trigger.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ═══════════════════════════════════════
+// SIMULATORE IMPOSTA SOSTITUTIVA
+// ═══════════════════════════════════════
+function fmt(n) {
+  return '€ ' + n.toLocaleString('it-IT', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+function calcSostitutiva() {
+  const r25 = parseFloat(document.getElementById('reddito2025').value) || 0;
+  const r26 = parseFloat(document.getElementById('reddito2026').value) || 0;
+  const aliq = parseFloat(document.getElementById('punteggioISA').value) || 0;
+  const tipo = document.getElementById('tipoSoggetto').value;
+
+  const result = document.getElementById('simResult');
+  const note = document.getElementById('simNote');
+
+  if (!r25 || !r26 || !aliq) {
+    result.style.display = 'none';
+    note.style.display = 'none';
+    return;
+  }
+
+  const incremento = Math.max(0, r26 - r25);
+  const baseImp = Math.min(incremento, 85000);
+  const eccedenza = Math.max(0, incremento - 85000);
+  const imposta = baseImp * aliq / 100;
+
+  document.getElementById('sr-base').textContent = fmt(r25);
+  document.getElementById('sr-conc').textContent = fmt(r26);
+  document.getElementById('sr-incr').textContent = incremento > 0 ? fmt(incremento) : '— (nessun incremento)';
+  document.getElementById('sr-base-imp').textContent = fmt(baseImp);
+  document.getElementById('sr-aliq').textContent = aliq + '%';
+  document.getElementById('sr-imp').textContent = fmt(imposta);
+  document.getElementById('sr-ecc').textContent = eccedenza > 0 ? fmt(eccedenza) + ' → tassazione ordinaria' : '—';
+
+  result.style.display = 'block';
+
+  let noteText = '';
+  if (incremento === 0) {
+    noteText = '⚠️ Il reddito concordato è inferiore o uguale al reddito 2025: l\'imposta sostitutiva non è applicabile (base imponibile = zero).';
+  } else if (eccedenza > 0) {
+    const aliqOrd = tipo === 'pf' ? 43 : 24;
+    noteText = `⚠️ L'eccedenza di ${fmt(eccedenza)} sopra la soglia di €85.000 sarà tassata in via ordinaria (aliquota massima ${aliqOrd}% per ${tipo === 'pf' ? 'IRPEF' : 'IRES'}).`;
+  } else {
+    noteText = '✅ L\'intero incremento rientra nella soglia agevolata di €85.000.';
+  }
+  note.textContent = noteText;
+  note.style.display = 'block';
+}
+</script>
+</body>
+</html>
